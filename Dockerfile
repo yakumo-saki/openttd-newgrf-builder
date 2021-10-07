@@ -2,7 +2,7 @@
 FROM python:3.6
 RUN apt-get update && \
 apt-get install -y git && \
-pip install Pillow chameleon nml==0.5.3 markdown
+pip install Pillow chameleon nml==0.5.3 markdown graphviz
 
 # FIRS (XIS)
 # nml > 0.6.0 causes error. need 0.5.3

@@ -27,21 +27,24 @@ if [ "$GIT_BRANCH" != "NONE" ]; then
     git checkout $GIT_BRANCH
 fi
 
+echo ""
 echo "====================================================="
 echo "Build"
 echo "====================================================="
 make
 
+echo ""
 echo "====================================================="
 echo "Copy artifact"
 echo "====================================================="
 echo "Find *.grf"
-find . -type f -name *.grf | xargs -I{} cp -v {} /result/
+find . -type f -name "*.grf" | xargs -I{} cp -v {} /result/
 
 #NEWGRF=`find . -type f -name *.grf | head -n 1`
 #echo "artifact is $NEWGRF. copying to /result/result.grf"
 #cp $NEWGRF /result.grf
 
+echo ""
 echo "*****************************************************"
 echo "                      Done"
 echo "*****************************************************"
