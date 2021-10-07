@@ -3,7 +3,7 @@
 if [ "$GIT_REPO" = "NONE" ]; then
     echo "Git repository not specified."
     echo "Method 1) Use this image using automated build. (make)"
-    echo "docker run -e GIT_REPO=https://example.com/user/repo.git -e GIT_BRANCH=main -v `pwd`/result.grf:/result.grf yakumosaki/openttd-newgrf-builder"
+    echo "docker run -e GIT_REPO=https://example.com/user/repo.git -e GIT_BRANCH=main -v `pwd`/result:/result yakumosaki/openttd-newgrf-builder"
     echo "Built NewGRF is 'result.grf' on your current directory"
     echo "NOTE: first part of -v must be a full path. Use (pwd)/result.grf for fish users."
     echo "NOTE: -e GIT_BRANCH=main is optional. Can omit when using default branch."
@@ -36,11 +36,11 @@ echo "====================================================="
 echo "Copy artifact"
 echo "====================================================="
 echo "Find *.grf"
-find . -type f -name *.grf
+find . -type f -name *.grf | xargs -I{} cp -v {} /result/
 
-NEWGRF=`find . -type f -name *.grf | head -n 1`
-echo "artifact is $NEWGRF. copying to /result.grf"
-cp $NEWGRF /result.grf
+#NEWGRF=`find . -type f -name *.grf | head -n 1`
+#echo "artifact is $NEWGRF. copying to /result/result.grf"
+#cp $NEWGRF /result.grf
 
 echo "*****************************************************"
 echo "                      Done"

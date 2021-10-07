@@ -8,12 +8,15 @@ Dockerfile for compiling NewGRFs.
 ### Method 1 auto build (use make for compiling)
 
 ```
-docker run -e GIT_REPO=https://example.com/someuser/newgrf -v `pwd`/result.grf:/result.grf yakumosaki/openttd-newgrf-builder
+docker run -e GIT_REPO=https://example.com/someuser/newgrf -e GIT_BRANCH=branch -v `pwd`/result:/result yakumosaki/openttd-newgrf-builder
 ```
 
-Built NewGRF is 'result.grf' on your current directory.
+Built NewGRF is '' on your current directory.
 
-NOTE: first part of -v must be a full path. Use (pwd)/result.grf for fish users.
+#### NOTES
+
+* first part of -v must be a full path. Use (pwd)/result.grf for fish users.
+* -e GIT_BRANCH=main is optional. Can omit when using default branch.
 
 ### Method 2 Use this image using manual build
 
