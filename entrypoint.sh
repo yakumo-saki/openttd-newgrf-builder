@@ -3,8 +3,9 @@
 if [ "$GIT_REPO" = "NONE" ]; then
     echo "Git repository not specified."
     echo "Method 1) Use this image using automated build. (make)"
-    echo "docker run -e GIT_REPO=https://example.com/.git -v result.grf:/result.grf yakumosaki/openttd-newgrf-builder"
+    echo "docker run -e GIT_REPO=https://example.com/.git -v `pwd`/result.grf:/result.grf yakumosaki/openttd-newgrf-builder"
     echo "Built NewGRF is 'result.grf' on your current directory"
+    echo "NOTE: first part of -v must be a full path. Use (pwd)/result.grf for fish users."
     echo "-"
     echo "Method 2) Use this image using manual build."
     echo "docker run -it --entrypoint bash yakumosaki/openttd-newgrf-builder"
