@@ -1,6 +1,7 @@
 # OpenTTD-newgrf-Builder container
 
-Dockerfile for compiling NewGRFs.
+Dockerfile for compiling NewGRFs.  
+
 
 ## usage
 
