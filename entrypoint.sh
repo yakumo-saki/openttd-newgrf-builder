@@ -3,9 +3,10 @@
 if [ "$GIT_REPO" = "NONE" ]; then
     echo "Git repository not specified."
     echo "Method 1) Use this image using automated build. (make)"
-    echo "docker run -e GIT_REPO=https://example.com/.git -v `pwd`/result.grf:/result.grf yakumosaki/openttd-newgrf-builder"
+    echo "docker run -e GIT_REPO=https://example.com/user/repo.git -e GIT_BRANCH=main -v `pwd`/result.grf:/result.grf yakumosaki/openttd-newgrf-builder"
     echo "Built NewGRF is 'result.grf' on your current directory"
     echo "NOTE: first part of -v must be a full path. Use (pwd)/result.grf for fish users."
+    echo "NOTE: -e GIT_BRANCH=main is optional. Can omit when using default branch."
     echo "-"
     echo "Method 2) Use this image using manual build."
     echo "docker run -it --entrypoint bash yakumosaki/openttd-newgrf-builder"
@@ -20,6 +21,11 @@ echo "Clone repo"
 echo "====================================================="
 git clone $GIT_REPO newgrf
 cd newgrf
+
+if [ "$GIT_BRANCH" != "NONE" ]; then
+    echo "Switch to branch $GIT_BRANCH"
+    git checkout $GIT_BRANCH
+fi
 
 echo "====================================================="
 echo "Build"

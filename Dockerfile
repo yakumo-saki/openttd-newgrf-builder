@@ -11,5 +11,6 @@ pip install Pillow chameleon nml==0.5.3 markdown
 COPY entrypoint.sh /entrypoint.sh
 
 ENV GIT_REPO=NONE
+ENV GIT_BRANCH=NONE
 
 ENTRYPOINT [ "/entrypoint.sh" ]
